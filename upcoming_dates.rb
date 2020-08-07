@@ -2,6 +2,8 @@ require 'json'
 
 require 'net/http'
 
+PUBMOB_ROOT="/Users/jlangr/pubmob"
+
 class UpcomingDates
 
   #attr_reader :schedules
@@ -10,18 +12,14 @@ class UpcomingDates
     @schedules
   end
 
-  def load
-    lines = File.readlines("/Users/jlangr/pubmob/_offerings/jefflangr-tdd-paint-by-numbers.md")
-  end
-
   def start_times(serviceId, schedules)
     schedule = schedules.detect {| schedule | schedule["services"][0]["serviceId"] == serviceId }
     available_days = schedule["availableDays"]
     # TODO allow more
     session_date = available_days[0]["date"]
     start_time = available_days[0]["hours"][0]["startTime"]
-    # TODO convert from MST to zulu time
-    ["#{session_date}T#{start_time}Z"]
+    
+    ["#{session_date}T#{start_time}Z"] # TODO convert from MST to zulu time
   end
 
   def flexbooker_service_id(lines)
@@ -34,12 +32,11 @@ class UpcomingDates
 
   def update_files()
     puts
-    Dir.foreach('/Users/jlangr/pubmob/_offerings') do |filename|
+    Dir.foreach("#{PUBMOB_ROOT}/_offerings") do |filename|
       next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
-      lines = File.readlines("/Users/jlangr/pubmob/_offerings/#{filename}")
+      lines = File.readlines("#{PUBMOB_ROOT}/_offerings/#{filename}")
       puts "#{filename}:"
       puts "  #{flexbooker_service_id(lines)}"
-
     end
   end
 
