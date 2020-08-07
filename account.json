@@ -1,0 +1,971 @@
+{
+  "accountTimeZone": "Mountain Standard Time",
+  "employees": [
+    {
+      "id": 38317,
+      "employeeGuid": "8e484287-c246-4103-b21d-a6975bd25c36",
+      "name": "David Bernstein",
+      "email": "david@tobeagile.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 38318,
+      "employeeGuid": "9226fe92-5623-4a98-8f98-2baf73d3fd98",
+      "name": "Dustin Thostenson",
+      "email": "Dustin@delta3consulting.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 38319,
+      "employeeGuid": "daf05015-550a-4e81-bf31-3eb63fb346ab",
+      "name": "J. B. Rainsberger",
+      "email": "me@jbrains.ca",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 38320,
+      "employeeGuid": "d26eac50-2ccf-4869-aa6d-9277035344d4",
+      "name": "James Grenning",
+      "email": "james@wingman-sw.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 37789,
+      "employeeGuid": "39452ebc-2fd8-43e2-8dfc-3fbedc054902",
+      "name": "Jeff Langr",
+      "email": "jeff@langrsoft.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": true,
+      "locationId": null,
+      "lastLogin": "2020-08-05T23:26:38.13+00:00",
+      "permissions": null
+    },
+    {
+      "id": 38330,
+      "employeeGuid": "5b743bca-83e7-4567-b970-01c11aa38847",
+      "name": "JJ Langr",
+      "email": "jjlangr@gmail.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": "2020-08-05T23:26:21.383+00:00",
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 38321,
+      "employeeGuid": "f1d84ca5-1fdd-426d-9b27-58749b071d66",
+      "name": "Lee Barnes",
+      "email": "lee.barnes@utopiasolutions.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 38322,
+      "employeeGuid": "1ebe5491-d8f3-42d1-a982-002e9229059e",
+      "name": "Llewellyn Falco",
+      "email": "llewellyn.falco@gmail.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 37790,
+      "employeeGuid": "4b98feb5-dca4-4a16-93cf-6b85591b290b",
+      "name": "Skylar Watson",
+      "email": "skylarrwatson@gmail.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": "https://s3.amazonaws.com/flexbooker_static/employees/f4226586-aa7b-4d48-9e3c-c011bcf76fbf/skylarwatson.jpg",
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": 38420,
+      "serviceGuid": "84b97b81-be8f-449c-96d1-7b5160c74bbe",
+      "name": "TDD Paint by Numbers",
+      "description": "Your first TDD experience: Learn refactoring & the Red-Green-Refactor Cycle.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": true,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": 1,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39115,
+      "serviceGuid": "0c7cefd1-8d72-48b4-a80a-c37f1224eb72",
+      "name": "Legacy Dependency Breaking Techniques",
+      "description": "Simple techniques to break dependencies making it hard to test",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39116,
+      "serviceGuid": "9823d6c6-51bb-492e-86b1-a40f1580f875",
+      "name": "From Mob to Symphony: A Mob Composing Workshop",
+      "description": "Not a programmer? Learn firsthand the joy of a mob. Come compose...",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39117,
+      "serviceGuid": "4d1e765b-cb1c-4f6e-8eba-7d017bc0d0dd",
+      "name": "Test Abstraction in TDD",
+      "description": "Ensure your unit tests stay sustainable.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39121,
+      "serviceGuid": "ef2fdf65-bc8f-46c9-ba69-ded3e55f50dc",
+      "name": "Outcome Metrics",
+      "description": "Learn what metrics are valuable to measure and lead to eliminating waste....",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39120,
+      "serviceGuid": "47cf70d5-bcac-41d9-ac2d-92cfdf73022b",
+      "name": "Branching By Abstraction",
+      "description": "Learn how to make small incremental changes during large refactorings.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 38421,
+      "serviceGuid": "6bca36e2-4ad1-4d66-8680-92fcd8eefd52",
+      "name": "Outcome-based Development",
+      "description": "Skylar teaches you the stuff.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": true,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": 1,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39119,
+      "serviceGuid": "99c34ea8-6c19-4577-800f-32408b838730",
+      "name": "Refactoring Without Tests",
+      "description": "safe refactoring without tests",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39118,
+      "serviceGuid": "5a15fc35-48b2-4197-b63c-e76eb96ea031",
+      "name": "Call Your Shot TDD",
+      "description": "Call Your Shot TDD",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39114,
+      "serviceGuid": "400e672a-a5ee-4df9-9c8c-ac1e5cc2ac2a",
+      "name": "Refactoring Java",
+      "description": "Java isn't going anywhere, so let's make it better!",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39113,
+      "serviceGuid": "e6832f5e-1fc3-4130-8d6c-97e0cbf465ed",
+      "name": "Let's Learn Purescript",
+      "description": "I'm not ready for Haskell just yet....",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39112,
+      "serviceGuid": "bdece2a4-9d61-45eb-9c39-4b74199c8953",
+      "name": "Bowling in Elm",
+      "description": "The bowling kata was just the beginning...",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39111,
+      "serviceGuid": "c44a4353-e3bd-47d0-ba74-2f8454f24744",
+      "name": "Refactoring FTW",
+      "description": "Build your refactoring muscle to more quickly allow the clear code emerge!...",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39110,
+      "serviceGuid": "71aa3277-d795-4b2b-a6ae-77c6502de2f8",
+      "name": "Mini-Assessments",
+      "description": "Find cost-effective ways to improve your software development processes.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39109,
+      "serviceGuid": "997a0646-01fd-4b65-973c-1b8debd02777",
+      "name": "Design Reviews",
+      "description": "Get an outside perspective on your design ideas",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39108,
+      "serviceGuid": "17a4bba9-fdfe-42b3-8e99-ecf7fecc1f75",
+      "name": "Code Inspections",
+      "description": "Learn a bunch of techniques for working in your code.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 38964,
+      "serviceGuid": "0085e2c6-ad44-45b3-b7d1-1a9a12d8aec5",
+      "name": "Test Automation Mini-Assessment",
+      "description": "Understand your readiness to succeed with Test Automation and develop a roadmap for success. You'll address obtacles within your organizaiton and get started on a path to effective Test Automation!",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": true,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    }
+  ],
+  "schedules": [
+    {
+      "id": 76761,
+      "employeeId": null,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39115,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/22/2020",
+      "endDate": "8/22/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "13:25",
+              "endTime": "14:40"
+            }
+          ],
+          "date": "2020-08-22"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 76767,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39115,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/22/2020",
+      "endDate": "8/22/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "09:15",
+              "endTime": "10:30"
+            }
+          ],
+          "date": "2020-08-22"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 76359,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38420,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "7/31/2020",
+      "endDate": "7/31/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "15:15",
+              "endTime": "16:30"
+            }
+          ],
+          "date": "2020-07-31"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 76766,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38420,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/14/2020",
+      "endDate": "8/14/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "18:50",
+              "endTime": "20:05"
+            }
+          ],
+          "date": "2020-08-14"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 76765,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38420,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/29/2020",
+      "endDate": "8/29/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "11:10",
+              "endTime": "12:25"
+            }
+          ],
+          "date": "2020-08-29"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 76360,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38964,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "7/31/2020",
+      "endDate": "7/31/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "17:00",
+              "endTime": "18:15"
+            }
+          ],
+          "date": "2020-07-31"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    }
+  ],
+  "customFields": []
+}

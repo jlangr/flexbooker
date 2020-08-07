@@ -1,0 +1,13 @@
+client id: pubmob
+
+secret: AnjTdmg...
+
+
+https://auth.flexbooker.com/connect/token
+
+POST /token HTTP/1.1
+Host: authorization-server.com
+ 
+grant_type=client_credentials
+&client_id=xxxxxxxxxx
+&client_secret=xxxxxxxxxx
