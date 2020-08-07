@@ -15,7 +15,6 @@ class UpcomingDates
   end
 
   def start_times(serviceId, schedules)
-    puts schedules
     schedule = schedules.detect {| schedule | schedule["services"][0]["serviceId"] == serviceId }
     available_days = schedule["availableDays"]
     # TODO allow more
@@ -31,6 +30,17 @@ class UpcomingDates
     match = value(line).match(/.*serviceIds=(\d+)/)
     raise "no serviceIds query param on the booking-link property" if not match
     match.captures[0]
+  end
+
+  def update_files()
+    puts
+    Dir.foreach('/Users/jlangr/pubmob/_offerings') do |filename|
+      next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
+      lines = File.readlines("/Users/jlangr/pubmob/_offerings/#{filename}")
+      puts "#{filename}:"
+      puts "  #{flexbooker_service_id(lines)}"
+
+    end
   end
 
   def property(line)

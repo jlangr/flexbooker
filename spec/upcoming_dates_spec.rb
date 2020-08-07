@@ -26,6 +26,16 @@ describe "retrieve start time from services" do
   end
 end
 
+describe "update all files" do
+  before(:each) do
+    @updater = UpcomingDates.new # TODO global init
+  end
+  
+  it "loads everything" do
+    @updater.update_files()
+  end
+end
+
 describe "service id from lines" do
   before(:each) do
     @updater = UpcomingDates.new
