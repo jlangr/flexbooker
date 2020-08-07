@@ -7,7 +7,10 @@ describe "everything" do
 
   describe "retrieve start time from services" do
 
-    # uh oh what about time zone
+    # TODO time zone. Right now it defaults to assuming UTC.
+    #                 Flexbooker will possibly fix so that
+    #                 things will be entered in the calendar time
+    #                 set by the "employee." Fix after we see that change.
 
     it "extracts single start time" do
 

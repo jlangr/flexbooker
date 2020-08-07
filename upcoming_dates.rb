@@ -39,11 +39,13 @@ class UpcomingDates
   end
 
   def update_files()
-    Dir.foreach("#{PUBMOB_ROOT}/_offerings") do |filename|
+    dir = "#{PUBMOB_ROOT}/_offerings"
+    Dir.foreach("#{dir}") do |filename|
       next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
-      lines = File.readlines("#{PUBMOB_ROOT}/_offerings/#{filename}")
-      updated_lines = update_start_times(lines, service_id)
-      File.writelines(filename, lines)
+      full_filename = "#{dir}/#{filename}"
+      lines = IO.readlines(full_filename, chomp: true)
+      updated_lines = update_start_times(lines)
+      File.open(full_filename, "w") { |f| f.write(updated_lines.join("\n")) }
     end
   end
 
