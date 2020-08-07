@@ -11,7 +11,7 @@ describe "everything" do
 
     it "extracts single start time" do
 
-      schedules = [
+      @updater.schedules = [
         {"id"=>12345, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 
          "startDate"=>"7/31/2020", "endDate"=>"7/31/2020", 
@@ -23,8 +23,8 @@ describe "everything" do
          "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"11:10", "endTime"=>"12:25"}], "date"=>"2020-08-29"}], 
          "scheduleType"=>1, "slots"=>6}]
 
-      expect(@updater.start_times(99999, schedules)).to eql(["2020-07-31T17:00Z"])
-      expect(@updater.start_times(88888, schedules)).to eql(["2020-08-29T11:10Z"])
+      expect(@updater.start_times(99999)).to eql(["2020-07-31T17:00Z"])
+      expect(@updater.start_times(88888)).to eql(["2020-08-29T11:10Z"])
 
     end
   end
@@ -37,7 +37,7 @@ describe "everything" do
   end
 
   it "extracts multiple dates from availableDays" do
-    schedules = [{
+    @updater.schedules = [{
       "id"=> 76816,
       "employeeId"=> 38319,
       "services"=> [{ "serviceId"=> 39113, "price"=> 95 }],
@@ -50,7 +50,7 @@ describe "everything" do
       ]
     }]
 
-    expect(@updater.start_times(39113, schedules))
+    expect(@updater.start_times(39113))
       .to eql(["2020-08-20T09:30Z", "2020-09-03T09:30Z"])
   end
 
@@ -66,9 +66,19 @@ describe "everything" do
       lines = ["next-available-sessions: []", 
                "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
 
-      updated_lines = @updater.update_start_times(lines, 12345)
+      updated_lines = @updater.update_start_times(lines)
 
       expect(updated_lines[0]).to eql("next-available-sessions: [2020-07-31T17:00Z,2020-08-02T19:00Z]")
+    end
+
+    it "empties the available session if no times exist" do
+      @updater.schedules = []
+      lines = ["next-available-sessions: []", 
+               "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
+
+      updated_lines = @updater.update_start_times(lines)
+
+      expect(updated_lines[0]).to eql("next-available-sessions: []")
     end
   end
 

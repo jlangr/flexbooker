@@ -7,8 +7,12 @@ class UpcomingDates
 
   attr_accessor :schedules, :account, :json_string
 
-  def start_times(serviceId, schedules)
-    schedule = schedules.detect {| schedule | schedule["services"][0]["serviceId"] == serviceId }
+  def start_times(service_id)
+    schedule = @schedules.detect do | schedule | 
+      service = schedule["services"][0]
+      service["serviceId"] == service_id.to_i
+    end
+    return [] if not schedule
     available_days = schedule["availableDays"]
     # TODO same day?
     available_days.map {| day | start_time(day) }
@@ -17,7 +21,6 @@ class UpcomingDates
   def start_time(day)
     session_date = day["date"]
     start_time = day["hours"][0]["startTime"]
-    
     "#{session_date}T#{start_time}Z" # TODO convert from MST to zulu time
   end
 
@@ -33,17 +36,16 @@ class UpcomingDates
     Dir.foreach("#{PUBMOB_ROOT}/_offerings") do |filename|
       next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
       lines = File.readlines("#{PUBMOB_ROOT}/_offerings/#{filename}")
-      service_id = flexbooker_service_id(lines)
       updated_lines = update_start_times(lines, service_id)
       File.writelines(filename, lines)
     end
   end
 
-  def update_start_times(lines, service_id)
-    puts "service id: #{service_id}"
+  def update_start_times(lines)
+    service_id = flexbooker_service_id(lines)
+    start_times = start_times(service_id)
     lines.map do | line |
       if property(line) == "next-available-sessions" 
-        start_times = start_times(service_id, @schedules)
         "next-available-sessions: [#{comma_separated(start_times)}]"
       else 
         line 
