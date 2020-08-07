@@ -29,6 +29,13 @@ describe "everything" do
     end
   end
 
+  describe "comma_separated" do
+    it "comma-separates an array of strings" do
+      expect(@updater.comma_separated(["a", "b"])).to eql("a,b")
+      expect(@updater.comma_separated([])).to eql("")
+    end
+  end
+
   it "extracts multiple dates from availableDays" do
     schedules = [{
       "id"=> 76816,
@@ -48,6 +55,7 @@ describe "everything" do
   end
 
   # TODO: sort by date; remove any that have past; limit to 3; updates (overwrites) existing
+  # TODO: what if there are no entries in schedules
 
   describe "update_start_times" do
     it "updates the _offerings markdown lines with appropriate next start times" do

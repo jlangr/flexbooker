@@ -5,12 +5,11 @@ PUBMOB_ROOT="/Users/jlangr/pubmob"
 
 class UpcomingDates
 
-  attr_accessor :schedules
+  attr_accessor :schedules, :account, :json_string
 
   def start_times(serviceId, schedules)
     schedule = schedules.detect {| schedule | schedule["services"][0]["serviceId"] == serviceId }
     available_days = schedule["availableDays"]
-    # TODO allow more
     # TODO same day?
     available_days.map {| day | start_time(day) }
   end
@@ -35,15 +34,13 @@ class UpcomingDates
       next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
       lines = File.readlines("#{PUBMOB_ROOT}/_offerings/#{filename}")
       service_id = flexbooker_service_id(lines)
-      update_with_schedules(filename, lines, service_id)
+      updated_lines = update_start_times(lines, service_id)
+      File.writelines(filename, lines)
     end
   end
 
-  def update_with_schedules(filename, lines, service_id)
-    update_start_times(lines, service_id)
-  end
-
   def update_start_times(lines, service_id)
+    puts "service id: #{service_id}"
     lines.map do | line |
       if property(line) == "next-available-sessions" 
         start_times = start_times(service_id, @schedules)
@@ -77,10 +74,10 @@ class UpcomingDates
     response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) {|http| http.request(request) }
 
     body = response.body
-
-    puts body 
+    @json_string = body
 
     json = JSON.parse(body)
+    @account = json
     @services = json["services"]
     @schedules = json["schedules"]
   end
