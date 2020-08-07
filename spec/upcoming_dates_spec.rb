@@ -14,17 +14,17 @@ describe "everything" do
       @updater.schedules = [
         {"id"=>12345, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 
-         "startDate"=>"7/31/2020", "endDate"=>"7/31/2020", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"17:00", "endTime"=>"18:15"}], "date"=>"2020-07-31"}], 
+         "startDate"=>"7/31/2035", "endDate"=>"7/31/2035", 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"17:00", "endTime"=>"18:15"}], "date"=>"2035-07-31"}], 
          "scheduleType"=>1, "slots"=>6},
         {"id"=>54321, 
          "services"=>[{"serviceId"=>88888, "price"=>95}], 
-         "startDate"=>"8/29/2020", "endDate"=>"8/29/2020", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"11:10", "endTime"=>"12:25"}], "date"=>"2020-08-29"}], 
+         "startDate"=>"8/29/2035", "endDate"=>"8/29/2035", 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"11:10", "endTime"=>"12:25"}], "date"=>"2035-08-29"}], 
          "scheduleType"=>1, "slots"=>6}]
 
-      expect(@updater.start_times(99999)).to eql(["2020-07-31T17:00Z"])
-      expect(@updater.start_times(88888)).to eql(["2020-08-29T11:10Z"])
+      expect(@updater.start_times(99999)).to eql(["2035-07-31T17:00Z"])
+      expect(@updater.start_times(88888)).to eql(["2035-08-29T11:10Z"])
 
     end
   end
@@ -36,50 +36,55 @@ describe "everything" do
     end
   end
 
-  it "extracts multiple dates from availableDays" do
-    @updater.schedules = [{
-      "id"=> 76816,
-      "employeeId"=> 38319,
-      "services"=> [{ "serviceId"=> 39113, "price"=> 95 }],
-      "startDate"=> "8/6/2020", "endDate"=> "8/6/2020",
-      "availableDays"=> [{
-          "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
-          "date"=> "2020-08-20" },
-        { "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
-          "date"=> "2020-09-03" }
-      ]
-    }]
+  describe "start times" do
+    it "extracts multiple dates from availableDays" do
+      @updater.schedules = [{
+        "id"=> 76816,
+        "employeeId"=> 38319,
+        "services"=> [{ "serviceId"=> 39113, "price"=> 95 }],
+        "startDate"=> "8/6/2035", "endDate"=> "8/6/2035",
+        "availableDays"=> [{
+            "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+            "date"=> "2035-08-20" },
+          { "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+            "date"=> "2035-09-03" }
+        ]
+      }]
 
-    expect(@updater.start_times(39113))
-      .to eql(["2020-08-20T09:30Z", "2020-09-03T09:30Z"])
+      expect(@updater.start_times(39113))
+        .to eql(["2035-08-20T09:30Z", "2035-09-03T09:30Z"])
+    end
+
+    it "returns empty array if no schedule exists for service ID" do
+      @updater.schedules = []
+
+      expect(@updater.start_times(99999)).to eql([])
+    end
+
+    it "ignores past offerings" do
+      @updater.schedules = [
+        {"services"=> [{ "serviceId" => 12345 }], 
+         "availableDays" => [{"hours" => [{ "startTime" => "17:00" }], "date" => "2019-07-31"},
+                             {"hours" => [{ "startTime" => "19:00" }], "date" => "2038-01-01"}]}]
+
+      expect(@updater.start_times(12345)).to eql(["2038-01-01T19:00Z"])
+    end
   end
-
-  # TODO: sort by date; remove any that have past; limit to 3; updates (overwrites) existing
-  # TODO: what if there are no entries in schedules
 
   describe "update_start_times" do
     it "updates the _offerings markdown lines with appropriate next start times" do
       @updater.schedules = [
         {"services"=> [{ "serviceId" => 12345 }], 
-         "availableDays" => [{"hours" => [{ "startTime" => "17:00" }], "date" => "2020-07-31"},
-                             {"hours" => [{ "startTime" => "19:00" }], "date" => "2020-08-02"}]}]
+         "availableDays" => [{"hours" => [{ "startTime" => "17:00" }], "date" => "2035-07-31"},
+                             {"hours" => [{ "startTime" => "19:00" }], "date" => "2035-08-02"}]}]
       lines = ["next-available-sessions: []", 
                "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
 
       updated_lines = @updater.update_start_times(lines)
 
-      expect(updated_lines[0]).to eql("next-available-sessions: [2020-07-31T17:00Z,2020-08-02T19:00Z]")
+      expect(updated_lines[0]).to eql("next-available-sessions: [2035-07-31T17:00Z,2035-08-02T19:00Z]")
     end
 
-    it "empties the available session if no times exist" do
-      @updater.schedules = []
-      lines = ["next-available-sessions: []", 
-               "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
-
-      updated_lines = @updater.update_start_times(lines)
-
-      expect(updated_lines[0]).to eql("next-available-sessions: []")
-    end
   end
 
   describe "service id from lines" do

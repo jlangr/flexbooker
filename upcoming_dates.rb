@@ -1,5 +1,6 @@
 require 'json'
 require 'net/http'
+require 'date'
 
 PUBMOB_ROOT="/Users/jlangr/pubmob"
 
@@ -9,13 +10,18 @@ class UpcomingDates
 
   def start_times(service_id)
     schedule = @schedules.detect do | schedule | 
-      service = schedule["services"][0]
+      service = schedule["services"][0] # assume only one service ID to a schedule for now?
       service["serviceId"] == service_id.to_i
     end
     return [] if not schedule
     available_days = schedule["availableDays"]
-    # TODO same day?
-    available_days.map {| day | start_time(day) }
+    available_days
+      .collect {| day | start_time(day) }
+      .reject {| start_time | is_past? start_time }
+  end
+
+  def is_past?(time_string)
+    DateTime.parse(time_string) < DateTime.now
   end
 
   def start_time(day)
@@ -44,7 +50,7 @@ class UpcomingDates
   def update_start_times(lines)
     service_id = flexbooker_service_id(lines)
     start_times = start_times(service_id)
-    lines.map do | line |
+    lines.collect do | line |
       if property(line) == "next-available-sessions" 
         "next-available-sessions: [#{comma_separated(start_times)}]"
       else 
