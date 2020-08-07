@@ -1,25 +1,25 @@
 require 'json'
-
 require 'net/http'
 
 PUBMOB_ROOT="/Users/jlangr/pubmob"
 
 class UpcomingDates
 
-  #attr_reader :schedules
-
-  def schedules
-    @schedules
-  end
+  attr_accessor :schedules
 
   def start_times(serviceId, schedules)
     schedule = schedules.detect {| schedule | schedule["services"][0]["serviceId"] == serviceId }
     available_days = schedule["availableDays"]
     # TODO allow more
-    session_date = available_days[0]["date"]
-    start_time = available_days[0]["hours"][0]["startTime"]
+    # TODO same day?
+    available_days.map {| day | start_time(day) }
+  end
+
+  def start_time(day)
+    session_date = day["date"]
+    start_time = day["hours"][0]["startTime"]
     
-    ["#{session_date}T#{start_time}Z"] # TODO convert from MST to zulu time
+    "#{session_date}T#{start_time}Z" # TODO convert from MST to zulu time
   end
 
   def flexbooker_service_id(lines)
@@ -31,13 +31,31 @@ class UpcomingDates
   end
 
   def update_files()
-    puts
     Dir.foreach("#{PUBMOB_ROOT}/_offerings") do |filename|
       next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
       lines = File.readlines("#{PUBMOB_ROOT}/_offerings/#{filename}")
-      puts "#{filename}:"
-      puts "  #{flexbooker_service_id(lines)}"
+      service_id = flexbooker_service_id(lines)
+      update_with_schedules(filename, lines, service_id)
     end
+  end
+
+  def update_with_schedules(filename, lines, service_id)
+    update_start_times(lines, service_id)
+  end
+
+  def update_start_times(lines, service_id)
+    lines.map do | line |
+      if property(line) == "next-available-sessions" 
+        start_times = start_times(service_id, @schedules)
+        "next-available-sessions: [#{comma_separated(start_times)}]"
+      else 
+        line 
+      end
+    end
+  end
+
+  def comma_separated(string_array)
+    string_array.compact.reject(&:empty?).join(',')
   end
 
   def property(line)
@@ -59,6 +77,8 @@ class UpcomingDates
     response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) {|http| http.request(request) }
 
     body = response.body
+
+    puts body 
 
     json = JSON.parse(body)
     @services = json["services"]

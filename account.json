@@ -135,7 +135,7 @@
       "avatarUrl": null,
       "isAdmin": false,
       "locationId": null,
-      "lastLogin": null,
+      "lastLogin": "2020-08-06T14:17:13.537+00:00",
       "permissions": [
         {
           "name": "ViewCustomerList",
@@ -259,7 +259,7 @@
       "avatarUrl": null,
       "isAdmin": true,
       "locationId": null,
-      "lastLogin": "2020-08-05T23:26:38.13+00:00",
+      "lastLogin": "2020-08-06T22:16:52.137+00:00",
       "permissions": null
     },
     {
@@ -272,7 +272,7 @@
       "avatarUrl": null,
       "isAdmin": false,
       "locationId": null,
-      "lastLogin": "2020-08-05T23:26:21.383+00:00",
+      "lastLogin": "2020-08-06T22:50:56.477+00:00",
       "permissions": [
         {
           "name": "ViewCustomerList",
@@ -787,6 +787,86 @@
   ],
   "schedules": [
     {
+      "id": 76837,
+      "employeeId": 38330,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39116,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/29/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "01:00",
+              "endTime": "02:15"
+            }
+          ],
+          "date": "2020-08-29"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 76841,
+      "employeeId": 38330,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39116,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/29/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "10:00",
+              "endTime": "11:15"
+            }
+          ],
+          "date": "2020-08-29"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
       "id": 76761,
       "employeeId": null,
       "secondEmployeeId": null,
@@ -847,6 +927,46 @@
       "slots": 6
     },
     {
+      "id": 76816,
+      "employeeId": 38319,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39113,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/6/2020",
+      "endDate": "8/6/2020",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "09:30",
+              "endTime": "10:45"
+            }
+          ],
+          "date": "2020-08-20"
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "09:30",
+              "endTime": "10:45"
+            }
+          ],
+          "date": "2020-09-03"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
       "id": 76359,
       "employeeId": 37789,
       "secondEmployeeId": null,
@@ -875,6 +995,46 @@
       ],
       "scheduleType": 1,
       "slots": 6
+    },
+    {
+      "id": 76836,
+      "employeeId": 38330,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38420,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "8/12/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "00:25",
+              "endTime": "01:40"
+            }
+          ],
+          "date": "2020-08-12"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
     },
     {
       "id": 76766,

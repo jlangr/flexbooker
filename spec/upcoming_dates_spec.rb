@@ -29,10 +29,38 @@ describe "everything" do
     end
   end
 
-  describe "update all files" do
-    
-    it "loads everything" do
-      @updater.update_files()
+  it "extracts multiple dates from availableDays" do
+    schedules = [{
+      "id"=> 76816,
+      "employeeId"=> 38319,
+      "services"=> [{ "serviceId"=> 39113, "price"=> 95 }],
+      "startDate"=> "8/6/2020", "endDate"=> "8/6/2020",
+      "availableDays"=> [{
+          "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+          "date"=> "2020-08-20" },
+        { "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+          "date"=> "2020-09-03" }
+      ]
+    }]
+
+    expect(@updater.start_times(39113, schedules))
+      .to eql(["2020-08-20T09:30Z", "2020-09-03T09:30Z"])
+  end
+
+  # TODO: sort by date; remove any that have past; limit to 3; updates (overwrites) existing
+
+  describe "update_start_times" do
+    it "updates the _offerings markdown lines with appropriate next start times" do
+      @updater.schedules = [
+        {"services"=> [{ "serviceId" => 12345 }], 
+         "availableDays" => [{"hours" => [{ "startTime" => "17:00" }], "date" => "2020-07-31"},
+                             {"hours" => [{ "startTime" => "19:00" }], "date" => "2020-08-02"}]}]
+      lines = ["next-available-sessions: []", 
+               "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
+
+      updated_lines = @updater.update_start_times(lines, 12345)
+
+      expect(updated_lines[0]).to eql("next-available-sessions: [2020-07-31T17:00Z,2020-08-02T19:00Z]")
     end
   end
 
