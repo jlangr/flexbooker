@@ -30,16 +30,7 @@ describe "everything" do
       expect(@updater.start_times(88888)).to eql(["2035-08-29T11:10Z"])
 
     end
-  end
 
-  describe "comma_separated" do
-    it "comma-separates an array of strings" do
-      expect(@updater.comma_separated(["a", "b"])).to eql("a,b")
-      expect(@updater.comma_separated([])).to eql("")
-    end
-  end
-
-  describe "start times" do
     it "extracts multiple dates from availableDays" do
       @updater.schedules = [{
         "id"=> 76816,
@@ -56,6 +47,18 @@ describe "everything" do
 
       expect(@updater.start_times(39113))
         .to eql(["2035-08-20T09:30Z", "2035-09-03T09:30Z"])
+    end
+
+    it "ignores availableDays entries with null date" do
+      @updater.schedules = [{
+        "services"=> [{ "serviceId"=> 39113 }],
+        "availableDays"=> [{
+            "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+            "date"=> nil },
+          { "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+            "date"=> "2035-09-03" } ] }]
+
+      expect(@updater.start_times(39113)).to eql(["2035-09-03T09:30Z"])
     end
 
     it "returns empty array if no schedule exists for service ID" do
@@ -126,6 +129,13 @@ describe "everything" do
 
       expect{ @updater.flexbooker_service_id(linesWithoutServiceIds) }
         .to raise_error("no serviceIds query param on the booking-link property")
+    end
+  end
+
+  describe "comma_separated" do
+    it "comma-separates an array of strings" do
+      expect(@updater.comma_separated(["a", "b"])).to eql("a,b")
+      expect(@updater.comma_separated([])).to eql("")
     end
   end
 end
