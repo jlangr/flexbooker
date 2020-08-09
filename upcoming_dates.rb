@@ -9,16 +9,22 @@ class UpcomingDates
   attr_accessor :schedules, :account, :json_string
 
   def start_times(service_id)
-    schedule = @schedules.detect do | each | 
-      service = each["services"][0] # assume only one service ID to a schedule for now?
-      service["serviceId"] == service_id.to_i
+    matching_schedules(service_id).collect do | schedule |
+      schedule["availableDays"]
+        .reject {| day | day["date"].nil? }
+        .collect {| day | start_time(day) }
+        .reject {| start_time | is_past? start_time }
     end
-    return [] if not schedule
-    available_days = schedule["availableDays"]
-    available_days
-      .reject {| day | day["date"].nil? }
-      .collect {| day | start_time(day) }
-      .reject {| start_time | is_past? start_time }
+      .flatten
+  end
+
+  def matching_schedules(service_id)
+    @schedules.select { | each | sole_service_matches_service_id? each, service_id }
+  end
+
+  def sole_service_matches_service_id?(schedule, service_id)
+    service = schedule["services"][0] # assume only one service ID to a schedule for now?
+    service["serviceId"] == service_id.to_i
   end
 
   def is_past?(time_string)

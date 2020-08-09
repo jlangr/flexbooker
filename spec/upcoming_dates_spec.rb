@@ -31,6 +31,24 @@ describe "everything" do
 
     end
 
+    it "comines multiple schedules" do
+
+      @updater.schedules = [
+        {"id"=>12345, 
+         "services"=>[{"serviceId"=>99999, "price"=>95}], 
+         "startDate"=>"7/31/2035", "endDate"=>"7/31/2035", 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"17:00", "endTime"=>"18:15"}], "date"=>"2035-07-31"}], 
+         "scheduleType"=>1, "slots"=>6},
+        {"id"=>54321, 
+         "services"=>[{"serviceId"=>99999, "price"=>95}], 
+         "startDate"=>"8/29/2035", "endDate"=>"8/29/2035", 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"11:10", "endTime"=>"12:25"}], "date"=>"2035-08-29"}], 
+         "scheduleType"=>1, "slots"=>6}]
+
+      expect(@updater.start_times(99999)).to eql(["2035-07-31T17:00Z","2035-08-29T11:10Z"])
+
+    end
+
     it "extracts multiple dates from availableDays" do
       @updater.schedules = [{
         "id"=> 76816,
