@@ -3,6 +3,7 @@ require 'net/http'
 require 'date'
 
 PUBMOB_ROOT="/Users/jlangr/pubmob"
+TIME_OFFSET_FOR_FLEXBOOKER_DATES="-07:00"
 
 class UpcomingDates
 
@@ -34,10 +35,16 @@ class UpcomingDates
     DateTime.parse(time_string) < DateTime.now
   end
 
+  # TODO: update based on what we learn about times in Flexbooker
   def start_time(day)
     session_date = day["date"]
     start_time = day["hours"][0]["startTime"]
-    "#{session_date}T#{start_time}Z" # TODO convert from MST to zulu time
+    
+    start_time_string_in_mst = "#{session_date}T#{start_time}#{TIME_OFFSET_FOR_FLEXBOOKER_DATES}"
+
+    start_time_date = DateTime.parse(start_time_string_in_mst)
+    start_time_utc = start_time_date.new_offset('-0000')
+    start_time_utc.strftime('%FT%RZ')
   end
 
   def flexbooker_service_id(lines)

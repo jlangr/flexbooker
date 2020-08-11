@@ -11,6 +11,9 @@ describe "everything" do
     #                 Flexbooker will possibly fix so that
     #                 things will be entered in the calendar time
     #                 set by the "employee." Fix after we see that change.
+    #
+    #                 MST = UTC - 7
+    #                 MDT = UTC - 6
 
     it "extracts single start time" do
 
@@ -18,12 +21,12 @@ describe "everything" do
         {"id"=>12345, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 
          "startDate"=>"7/31/2035", "endDate"=>"7/31/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"17:00", "endTime"=>"18:15"}], "date"=>"2035-07-31"}], 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"10:00", "endTime"=>"11:15"}], "date"=>"2035-07-31"}], 
          "scheduleType"=>1, "slots"=>6},
         {"id"=>54321, 
          "services"=>[{"serviceId"=>88888, "price"=>95}], 
          "startDate"=>"8/29/2035", "endDate"=>"8/29/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"11:10", "endTime"=>"12:25"}], "date"=>"2035-08-29"}], 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-08-29"}], 
          "scheduleType"=>1, "slots"=>6}]
 
       expect(@updater.start_times(99999)).to eql(["2035-07-31T17:00Z"])
@@ -31,18 +34,18 @@ describe "everything" do
 
     end
 
-    it "comines multiple schedules" do
+    it "combines multiple schedules" do
 
       @updater.schedules = [
         {"id"=>12345, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 
          "startDate"=>"7/31/2035", "endDate"=>"7/31/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"17:00", "endTime"=>"18:15"}], "date"=>"2035-07-31"}], 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"10:00", "endTime"=>"11:15"}], "date"=>"2035-07-31"}], 
          "scheduleType"=>1, "slots"=>6},
         {"id"=>54321, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 
          "startDate"=>"8/29/2035", "endDate"=>"8/29/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"11:10", "endTime"=>"12:25"}], "date"=>"2035-08-29"}], 
+         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-08-29"}], 
          "scheduleType"=>1, "slots"=>6}]
 
       expect(@updater.start_times(99999)).to eql(["2035-07-31T17:00Z","2035-08-29T11:10Z"])
@@ -56,9 +59,9 @@ describe "everything" do
         "services"=> [{ "serviceId"=> 39113, "price"=> 95 }],
         "startDate"=> "8/6/2035", "endDate"=> "8/6/2035",
         "availableDays"=> [{
-            "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+            "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
             "date"=> "2035-08-20" },
-          { "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+          { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
             "date"=> "2035-09-03" }
         ]
       }]
@@ -71,9 +74,9 @@ describe "everything" do
       @updater.schedules = [{
         "services"=> [{ "serviceId"=> 39113 }],
         "availableDays"=> [{
-            "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+            "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
             "date"=> nil },
-          { "hours"=> [{ "startTime"=> "09:30", "endTime"=> "10:45" }],
+          { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
             "date"=> "2035-09-03" } ] }]
 
       expect(@updater.start_times(39113)).to eql(["2035-09-03T09:30Z"])
@@ -89,7 +92,7 @@ describe "everything" do
       @updater.schedules = [
         {"services"=> [{ "serviceId" => 12345 }], 
          "availableDays" => [{"hours" => [{ "startTime" => "17:00" }], "date" => "2019-07-31"},
-                             {"hours" => [{ "startTime" => "19:00" }], "date" => "2038-01-01"}]}]
+                             {"hours" => [{ "startTime" => "12:00" }], "date" => "2038-01-01"}]}]
 
       expect(@updater.start_times(12345)).to eql(["2038-01-01T19:00Z"])
     end
@@ -99,8 +102,8 @@ describe "everything" do
     it "updates the _offerings markdown lines with appropriate next start times" do
       @updater.schedules = [
         {"services"=> [{ "serviceId" => 12345 }], 
-         "availableDays" => [{"hours" => [{ "startTime" => "17:00" }], "date" => "2035-07-31"},
-                             {"hours" => [{ "startTime" => "19:00" }], "date" => "2035-08-02"}]}]
+         "availableDays" => [{"hours" => [{ "startTime" => "10:00" }], "date" => "2035-07-31"},
+                             {"hours" => [{ "startTime" => "12:00" }], "date" => "2035-08-02"}]}]
       lines = ["next-available-sessions: []", 
                "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
 
