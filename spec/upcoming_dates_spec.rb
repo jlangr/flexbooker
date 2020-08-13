@@ -1,93 +1,75 @@
 require './upcoming_dates.rb'
 
-describe "everything" do
+class IOStub
+  def log(s) end
+end
+
+describe "" do
   before(:each) do
-    @updater = UpcomingDates.new
+    @updater = UpcomingDates.new(io: IOStub.new)
   end
 
-  describe("start time") do
-    it("converts to UTC time string for MST times outside DST (UTC-7)") do
-      expect(@updater.start_time(["2021-12-31", "13:00"])).to eql("2021-12-31T20:00Z")
+  # MST = UTC - 7 (American/Denver)
+  # MDT = UTC - 6 (American/Denver)
+
+  describe("a start time") do
+    it("is a UTC time string for MST times outside DST (UTC-7)") do
+      expect(@updater.start_time(["2020-12-31", "12:00"])).to eql("2020-12-31T19:00Z")
     end
 
-    xit("converts to UTC time string for MST times during DST (UTC-6)") do
-      expect(@updater.start_time(["2021-07-01", "13:00"])).to eql("2021-07-01T19:00Z")
+    it("is a UTC time string for MST times during DST (UTC-6)") do
+      expect(@updater.start_time(["2020-08-13", "12:00"])).to eql("2020-08-13T18:00Z")
     end
   end
 
-  describe "retrieve start time from services" do
-
-    # TODO time zone. Right now it defaults to assuming UTC.
-    #                 Flexbooker will possibly fix so that
-    #                 things will be entered in the calendar time
-    #                 set by the "employee." Fix after we see that change.
-    #
-    #                 MST = UTC - 7
-    #                 MDT = UTC - 6
-
+  describe "retrieving start time from services" do
     it "extracts single start time" do
       @updater.schedules = [
-        {"id"=>12345, 
-         "services"=>[{"serviceId"=>99999, "price"=>95}], 
-         "startDate"=>"7/31/2035", "endDate"=>"7/31/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"10:00", "endTime"=>"11:15"}], "date"=>"2035-07-31"}], 
-         "scheduleType"=>1, "slots"=>6},
-        {"id"=>54321, 
-         "services"=>[{"serviceId"=>88888, "price"=>95}], 
-         "startDate"=>"8/29/2035", "endDate"=>"8/29/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-08-29"}], 
-         "scheduleType"=>1, "slots"=>6}]
+        { "services"=>[{"serviceId"=>99999}], 
+          "availableDays"=>[{"hours"=>[{"startTime"=>"10:00", "endTime"=>"11:15"}], "date"=>"2035-12-31"}]},
+        { "services"=>[{"serviceId"=>88888}], 
+          "availableDays"=>[{"hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-12-29"}]}]
 
-      expect(@updater.start_times(99999)).to eql(["2035-07-31T17:00Z"])
-      expect(@updater.start_times(88888)).to eql(["2035-08-29T11:10Z"])
+      expect(@updater.start_times(99999)).to eql(["2035-12-31T17:00Z"])
+      expect(@updater.start_times(88888)).to eql(["2035-12-29T11:10Z"])
 
     end
 
     it "combines multiple schedules" do
       @updater.schedules = [
-        {"id"=>12345, 
-         "services"=>[{"serviceId"=>99999, "price"=>95}], 
-         "startDate"=>"7/31/2035", "endDate"=>"7/31/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"10:00", "endTime"=>"11:15"}], "date"=>"2035-07-31"}], 
+        { "services"=>[{ "serviceId"=>99999 }], 
+          "availableDays"=>[{"hours"=>[{"startTime"=>"10:00", "endTime"=>"11:15"}], "date"=>"2035-12-31"}], 
          "scheduleType"=>1, "slots"=>6},
-        {"id"=>54321, 
-         "services"=>[{"serviceId"=>99999, "price"=>95}], 
-         "startDate"=>"8/29/2035", "endDate"=>"8/29/2035", 
-         "availableDays"=>[{"day"=>nil, "hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-08-29"}], 
-         "scheduleType"=>1, "slots"=>6}]
+        {
+         "services"=>[{ "serviceId"=>99999 }], 
+         "availableDays"=>[{"hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-12-29"}]}]
 
-      expect(@updater.start_times(99999)).to eql(["2035-07-31T17:00Z","2035-08-29T11:10Z"])
+      expect(@updater.start_times(99999)).to eql(["2035-12-31T17:00Z","2035-12-29T11:10Z"])
 
     end
 
     it "extracts multiple dates from availableDays" do
-      @updater.schedules = [{
-        "id"=> 76816,
-        "employeeId"=> 38319,
-        "services"=> [{ "serviceId"=> 39113, "price"=> 95 }],
-        "startDate"=> "8/6/2035", "endDate"=> "8/6/2035",
-        "availableDays"=> [{
-            "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
-            "date"=> "2035-08-20" },
-          { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
-            "date"=> "2035-09-03" }
-        ]
-      }]
-
+      @updater.schedules = [
+        {"services"=> [{ "serviceId"=> 39113 }],
+         "availableDays"=> [{
+           "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
+           "date"=> "2035-12-20" },
+         { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
+           "date"=> "2035-12-03" }]}]
       expect(@updater.start_times(39113))
-        .to eql(["2035-08-20T09:30Z", "2035-09-03T09:30Z"])
+        .to eql(["2035-12-20T09:30Z", "2035-12-03T09:30Z"])
     end
 
     it "ignores availableDays entries with null date" do
-      @updater.schedules = [{
-        "services"=> [{ "serviceId"=> 39113 }],
-        "availableDays"=> [{
+      @updater.schedules = [
+        {"services"=> [{ "serviceId"=> 39113 }],
+         "availableDays"=> [{
             "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
             "date"=> nil },
           { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
-            "date"=> "2035-09-03" } ] }]
+            "date"=> "2035-12-03" }]}]
 
-      expect(@updater.start_times(39113)).to eql(["2035-09-03T09:30Z"])
+      expect(@updater.start_times(39113)).to eql(["2035-12-03T09:30Z"])
     end
 
     it "returns empty array if no schedule exists for service ID" do
@@ -110,14 +92,22 @@ describe "everything" do
     it "updates the _offerings markdown lines with appropriate next start times" do
       @updater.schedules = [
         {"services"=> [{ "serviceId" => 12345 }], 
-         "availableDays" => [{"hours" => [{ "startTime" => "10:00" }], "date" => "2035-07-31"},
-                             {"hours" => [{ "startTime" => "12:00" }], "date" => "2035-08-02"}]}]
+         "availableDays" => [{"hours" => [{ "startTime" => "10:00" }], "date" => "2035-12-31"},
+                             {"hours" => [{ "startTime" => "12:00" }], "date" => "2035-12-02"}]}]
       lines = ["next-available-sessions: []", 
                "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
 
       updated_lines = @updater.update_start_times("", lines)
 
-      expect(updated_lines[0]).to eql("next-available-sessions: [2035-07-31T17:00Z,2035-08-02T19:00Z]")
+      expect(updated_lines[0]).to eql("next-available-sessions: [2035-12-31T17:00Z,2035-12-02T19:00Z]")
+    end
+
+    it "returns nil when there's no booking line" do
+      lines = []
+
+      updated_lines = @updater.update_start_times("", lines)
+
+      expect(updated_lines).to be_nil
     end
 
     it "returns nil when there's a problem getting the service ID" do

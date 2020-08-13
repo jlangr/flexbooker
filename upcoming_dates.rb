@@ -1,16 +1,27 @@
 require 'json'
 require 'net/http'
-require 'date'
+require 'time'
+require 'active_support/time'
 
 PUBMOB_ROOT="/Users/jlangr/pubmob"
-TIME_OFFSET_FOR_FLEXBOOKER_DATES="-07:00"
+OFFERINGS_DIR = "#{PUBMOB_ROOT}/_offerings"
+TIME_ZONE_FOR_FLEXBOOKER_DATES="America/Denver"
+
+class Stdout
+  def log(s)
+    puts s
+  end
+end
 
 class UpcomingDates
+  attr_accessor :schedules, :json_string
 
-  attr_accessor :schedules, :account, :json_string
+  def initialize(io: Stdout.new)
+    @io = io
+  end
 
   def matching_schedules(service_id)
-    @schedules.select { | each | sole_service_matches_service_id? each, service_id }
+    @schedules.select {| each | sole_service_matches_service_id? each, service_id }
   end
 
   def sole_service_matches_service_id?(schedule, service_id)
@@ -19,7 +30,7 @@ class UpcomingDates
   end
 
   def is_past?(time_string)
-    DateTime.parse(time_string) < DateTime.now
+    Time.parse(time_string) < Time.now
   end
 
   def start_times(service_id)
@@ -36,8 +47,7 @@ class UpcomingDates
   end
 
   def start_time((start_date, start_time))
-    start_time_utc = 
-      time_string_mst_to_utc_0(to_utc_format_string(start_date, start_time))
+    start_time_utc = time_string_mst_to_utc_0(to_utc_format_string(start_date, start_time))
     start_time_utc.strftime('%FT%RZ')
   end
 
@@ -47,55 +57,61 @@ class UpcomingDates
   end
 
   def time_string_mst_to_utc_0(time_string)
-    start_time_date = DateTime.parse(time_string)
-    start_time_date.new_offset('-0000')
+    start_time_date = Time.parse(time_string)
+    Time.use_zone(TIME_ZONE_FOR_FLEXBOOKER_DATES) { Time.zone.local_to_utc(start_time_date)   }
   end
 
   def to_utc_format_string(date, time)
-    "#{date}T#{time}#{TIME_OFFSET_FOR_FLEXBOOKER_DATES}"
+    "#{date}T#{time}"
   end
 
   def flexbooker_service_id(filename, lines)
     line = lines.detect {| line | property(line) == "booking-link" }
     if not line
-      puts "#{filename}: no booking-link property"
+      @io.log "#{filename}: no booking-link property"
       return nil 
     end
     match = value(line).match(/.*serviceIds=(\d+)/)
     if not match
-      puts "#{filename}: no serviceIds query param on the booking-link property"
+      @io.log "#{filename}: no serviceIds query param on the booking-link property"
       return nil
     end
     match.captures[0]
   end
 
   def update_files()
-    dir = "#{PUBMOB_ROOT}/_offerings"
-    Dir.foreach("#{dir}") do |filename|
-      next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
-      update_file(dir, filename)
-    end
+    Dir.foreach("#{OFFERINGS_DIR}") {|filename| update_file(filename) if markdown_file? filename }
   end
 
-  def update_file(dir, filename)
-    full_filename = "#{dir}/#{filename}"
+  def markdown_file?(filename)
+    (not filename == '.') and (not filename == '..') and filename.end_with? '.md'
+  end
+
+  def update_file(filename)
+    full_filename = "#{OFFERINGS_DIR}/#{filename}"
     lines = IO.readlines(full_filename, chomp: true)
-    puts "updating #{filename}"
+    @io.log "updating #{filename}"
     updated_lines = update_start_times(filename, lines)
-    File.open(full_filename, "w") { |f| f.write(updated_lines.join("\n")) } if updated_lines
+    write(full_filename, updated_lines) if updated_lines
+  end
+
+  def write(full_filename, updated_lines)
+    File.open(full_filename, "w") {|f| f.write(updated_lines.join("\n")) }
   end
 
   def update_start_times(filename, lines)
     service_id = flexbooker_service_id(filename, lines)
     return nil if not service_id
     start_times = start_times(service_id)
-    lines.collect do | line |
-      if property(line) == "next-available-sessions" 
-        "next-available-sessions: [#{comma_separated(start_times)}]"
-      else 
-        line 
-      end
-    end
+    lines.collect{| line | update_if_next_available_sessions(line, start_times) }
+  end
+
+  def update_if_next_available_sessions(line, start_times)
+    property(line) == "next-available-sessions" ?  next_available_sessions_line(start_times) : line
+  end
+
+  def next_available_sessions_line(start_times)
+    "next-available-sessions: [#{comma_separated(start_times)}]"
   end
 
   def comma_separated(string_array)
@@ -122,10 +138,7 @@ class UpcomingDates
 
     body = response.body
     @json_string = body
-
     json = JSON.parse(body)
-    @account = json
-    @services = json["services"]
     @schedules = json["schedules"]
   end
 end
