@@ -5,6 +5,16 @@ describe "everything" do
     @updater = UpcomingDates.new
   end
 
+  describe("start time") do
+    it("converts to UTC time string for MST times outside DST (UTC-7)") do
+      expect(@updater.start_time(["2021-12-31", "13:00"])).to eql("2021-12-31T20:00Z")
+    end
+
+    xit("converts to UTC time string for MST times during DST (UTC-6)") do
+      expect(@updater.start_time(["2021-07-01", "13:00"])).to eql("2021-07-01T19:00Z")
+    end
+  end
+
   describe "retrieve start time from services" do
 
     # TODO time zone. Right now it defaults to assuming UTC.
@@ -16,7 +26,6 @@ describe "everything" do
     #                 MDT = UTC - 6
 
     it "extracts single start time" do
-
       @updater.schedules = [
         {"id"=>12345, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 
@@ -35,7 +44,6 @@ describe "everything" do
     end
 
     it "combines multiple schedules" do
-
       @updater.schedules = [
         {"id"=>12345, 
          "services"=>[{"serviceId"=>99999, "price"=>95}], 

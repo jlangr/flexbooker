@@ -9,19 +9,6 @@ class UpcomingDates
 
   attr_accessor :schedules, :account, :json_string
 
-  def start_times(service_id)
-    matching_schedules(service_id)
-      .collect {| schedule | available_days(schedule) }
-      .flatten
-  end
-
-  def available_days(schedule)
-    schedule["availableDays"]
-      .reject {| day | day["date"].nil? }
-      .collect {| day | start_time(day) }
-      .reject {| start_time | is_past? start_time }
-  end
-
   def matching_schedules(service_id)
     @schedules.select { | each | sole_service_matches_service_id? each, service_id }
   end
@@ -35,16 +22,37 @@ class UpcomingDates
     DateTime.parse(time_string) < DateTime.now
   end
 
-  # TODO: update based on what we learn about times in Flexbooker
-  def start_time(day)
-    session_date = day["date"]
-    start_time = day["hours"][0]["startTime"]
-    
-    start_time_string_in_mst = "#{session_date}T#{start_time}#{TIME_OFFSET_FOR_FLEXBOOKER_DATES}"
+  def start_times(service_id)
+    matching_schedules(service_id)
+      .collect {| schedule | available_days(schedule) }
+      .flatten
+  end
 
-    start_time_date = DateTime.parse(start_time_string_in_mst)
-    start_time_utc = start_time_date.new_offset('-0000')
+  def available_days(schedule)
+    schedule["availableDays"]
+      .reject {| available_day | available_day["date"].nil? }
+      .collect {| available_day | start_time(start_date_and_time_from_available_day(available_day)) }
+      .reject {| start_time | is_past? start_time }
+  end
+
+  def start_time((start_date, start_time))
+    start_time_utc = 
+      time_string_mst_to_utc_0(to_utc_format_string(start_date, start_time))
     start_time_utc.strftime('%FT%RZ')
+  end
+
+  def start_date_and_time_from_available_day(available_day)
+    [available_day["date"], 
+     available_day["hours"][0]["startTime"]]
+  end
+
+  def time_string_mst_to_utc_0(time_string)
+    start_time_date = DateTime.parse(time_string)
+    start_time_date.new_offset('-0000')
+  end
+
+  def to_utc_format_string(date, time)
+    "#{date}T#{time}#{TIME_OFFSET_FOR_FLEXBOOKER_DATES}"
   end
 
   def flexbooker_service_id(lines)
