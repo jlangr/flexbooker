@@ -55,11 +55,17 @@ class UpcomingDates
     "#{date}T#{time}#{TIME_OFFSET_FOR_FLEXBOOKER_DATES}"
   end
 
-  def flexbooker_service_id(lines)
+  def flexbooker_service_id(filename, lines)
     line = lines.detect {| line | property(line) == "booking-link" }
-    raise "no booking-link property" if not line
+    if not line
+      puts "#{filename}: no booking-link property"
+      return nil 
+    end
     match = value(line).match(/.*serviceIds=(\d+)/)
-    raise "no serviceIds query param on the booking-link property" if not match
+    if not match
+      puts "#{filename}: no serviceIds query param on the booking-link property"
+      return nil
+    end
     match.captures[0]
   end
 
@@ -67,15 +73,21 @@ class UpcomingDates
     dir = "#{PUBMOB_ROOT}/_offerings"
     Dir.foreach("#{dir}") do |filename|
       next if filename == '.' or filename == '..' or (not filename.end_with? '.md')
-      full_filename = "#{dir}/#{filename}"
-      lines = IO.readlines(full_filename, chomp: true)
-      updated_lines = update_start_times(lines)
-      File.open(full_filename, "w") { |f| f.write(updated_lines.join("\n")) }
+      update_file(dir, filename)
     end
   end
 
-  def update_start_times(lines)
-    service_id = flexbooker_service_id(lines)
+  def update_file(dir, filename)
+    full_filename = "#{dir}/#{filename}"
+    lines = IO.readlines(full_filename, chomp: true)
+    puts "updating #{filename}"
+    updated_lines = update_start_times(filename, lines)
+    File.open(full_filename, "w") { |f| f.write(updated_lines.join("\n")) } if updated_lines
+  end
+
+  def update_start_times(filename, lines)
+    service_id = flexbooker_service_id(filename, lines)
+    return nil if not service_id
     start_times = start_times(service_id)
     lines.collect do | line |
       if property(line) == "next-available-sessions" 

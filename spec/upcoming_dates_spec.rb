@@ -115,9 +115,17 @@ describe "everything" do
       lines = ["next-available-sessions: []", 
                "booking-link: \"https://a.flexbooker.com/blah?serviceIds=12345\""]
 
-      updated_lines = @updater.update_start_times(lines)
+      updated_lines = @updater.update_start_times("", lines)
 
       expect(updated_lines[0]).to eql("next-available-sessions: [2035-07-31T17:00Z,2035-08-02T19:00Z]")
+    end
+
+    it "returns nil when there's a problem getting the service ID" do
+      lines = ["booking-link: \"\""]
+
+      updated_lines = @updater.update_start_times("", lines)
+
+      expect(updated_lines).to be_nil
     end
 
   end
@@ -133,7 +141,7 @@ describe "everything" do
         "active: true",
         "---"]
 
-      service_id = @updater.flexbooker_service_id(lines)
+      service_id = @updater.flexbooker_service_id("", lines)
 
       expect(service_id).to eql("54321")
     end
@@ -141,7 +149,7 @@ describe "everything" do
     it "can deal with whitespace around the property name" do
       lines = ["   booking-link : \"https://x.com?serviceIds=12345\"",]
 
-      service_id = @updater.flexbooker_service_id(lines)
+      service_id = @updater.flexbooker_service_id("", lines)
 
       expect(service_id).to eql("12345")
     end
@@ -149,15 +157,15 @@ describe "everything" do
     it "needs the booking-link property" do
       linesWithoutBookingLink = ["pagename: whatever"]
 
-      expect{ @updater.flexbooker_service_id(linesWithoutBookingLink) }
-        .to raise_error("no booking-link property")
+      expect(@updater.flexbooker_service_id("", linesWithoutBookingLink))
+        .to be_nil
     end
 
     it "needs a valid URL for the booking-link property" do
       linesWithoutServiceIds = ["booking-link: \"https://a.flexbooker.com/widget/75e809c1-6688-42cc-9fbf-77b001c15991\""]
 
-      expect{ @updater.flexbooker_service_id(linesWithoutServiceIds) }
-        .to raise_error("no serviceIds query param on the booking-link property")
+      expect(@updater.flexbooker_service_id("", linesWithoutServiceIds))
+        .to be_nil
     end
   end
 
