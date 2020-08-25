@@ -29,6 +29,10 @@ class UpcomingDates
     service["serviceId"] == service_id.to_i
   end
 
+  def is_recurring_event?(schedule)
+    schedule["availableDays"].any? {| available_day | available_day["day"] }
+  end
+
   def is_past?(time_string)
     Time.parse(time_string) < Time.now
   end
@@ -42,8 +46,13 @@ class UpcomingDates
   def available_days(schedule)
     schedule["availableDays"]
       .reject {| available_day | available_day["date"].nil? }
+      .reject {| available_day | ignore_recurring?(schedule, available_day) }
       .collect {| available_day | start_time(start_date_and_time_from_available_day(available_day)) }
       .reject {| start_time | is_past? start_time }
+  end
+
+  def ignore_recurring?(schedule, available_day)
+    is_recurring_event? schedule and available_day["day"].nil? 
   end
 
   def start_time((start_date, start_time))

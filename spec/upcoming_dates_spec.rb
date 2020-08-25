@@ -22,6 +22,26 @@ describe "" do
     end
   end
 
+  describe "recurring events" do
+    it "is a recurring event when any day in availableDays is not nil" do
+      schedule =
+        { "availableDays" => [
+          { "day" => 1, "hours" => [{ "startTime"=> "12:00", "endTime" => "13:15" }], "date"=> nil },
+          { "day"=> nil, "hours"=> [{ "startTime"=> "12:00", "endTime" => "13:15" }], "date"=> "2020-08-14" }]}
+
+      expect(@updater.is_recurring_event? schedule).to be true
+    end
+
+    it "is not a recurring event when all days in availableDays are nil" do
+      schedule =
+        { "availableDays" => [
+          { "day" => nil, "hours" => [{ "startTime"=> "12:00", "endTime" => "13:15" }], "date"=> nil },
+          { "day"=> nil, "hours"=> [{ "startTime"=> "12:00", "endTime" => "13:15" }], "date"=> "2020-08-14" }]}
+
+      expect(@updater.is_recurring_event? schedule).to be false
+    end
+  end
+
   describe "retrieving start time from services" do
     it "extracts single start time" do
       @updater.schedules = [
@@ -45,22 +65,31 @@ describe "" do
          "availableDays"=>[{"hours"=>[{"startTime"=>"04:10", "endTime"=>"05:25"}], "date"=>"2035-12-29"}]}]
 
       expect(@updater.start_times(99999)).to eql(["2035-12-31T17:00Z","2035-12-29T11:10Z"])
-
     end
 
     it "extracts multiple dates from availableDays" do
       @updater.schedules = [
         {"services"=> [{ "serviceId"=> 39113 }],
-         "availableDays"=> [{
-           "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
+         "availableDays"=> [
+           { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
            "date"=> "2035-12-20" },
-         { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
+           { "hours"=> [{ "startTime"=> "02:30", "endTime"=> "10:45" }],
            "date"=> "2035-12-03" }]}]
       expect(@updater.start_times(39113))
         .to eql(["2035-12-20T09:30Z", "2035-12-03T09:30Z"])
     end
 
-    it "ignores availableDays entries with null date" do
+    it "ignores availableDays entries for recurring event where day is nil" do
+      @updater.schedules = [
+        { "services"=> [{ "serviceId"=> 39113 }],
+          "availableDays" => [
+            { "day" => 1, "hours" => [{ "startTime"=> "12:00", "endTime" => "13:15" }], "date"=> nil },
+            { "day" => nil, "hours"=> [{ "startTime"=> "12:00", "endTime" => "13:15" }], "date"=> "2035-01-01" }]} ]
+
+      expect(@updater.start_times(39113)).to eql []
+    end
+
+    it "ignores availableDays entries with nil date" do
       @updater.schedules = [
         {"services"=> [{ "serviceId"=> 39113 }],
          "availableDays"=> [{
