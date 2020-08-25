@@ -128,7 +128,7 @@ describe "" do
 
       updated_lines = @updater.update_start_times("", lines)
 
-      expect(updated_lines[0]).to eql("next-available-sessions: [2035-12-31T17:00Z,2035-12-02T19:00Z]")
+      expect(updated_lines[0]).to eql("next-available-sessions: [\"2035-12-31T17:00Z\",\"2035-12-02T19:00Z\"]")
     end
 
     it "returns nil when there's no booking line" do

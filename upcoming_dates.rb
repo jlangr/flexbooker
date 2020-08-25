@@ -119,8 +119,12 @@ class UpcomingDates
     property(line) == "next-available-sessions" ?  next_available_sessions_line(start_times) : line
   end
 
+  def quoted(array)
+    array.collect{| each | "\"#{each}\"" }
+  end
+
   def next_available_sessions_line(start_times)
-    "next-available-sessions: [#{comma_separated(start_times)}]"
+    "next-available-sessions: [#{comma_separated(quoted(start_times))}]"
   end
 
   def comma_separated(string_array)
