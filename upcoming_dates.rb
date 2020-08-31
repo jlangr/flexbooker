@@ -47,7 +47,8 @@ class UpcomingDates
     schedule["availableDays"]
       .reject {| available_day | available_day["date"].nil? }
       .reject {| available_day | ignore_recurring?(schedule, available_day) }
-      .collect {| available_day | start_time(start_date_and_time_from_available_day(available_day)) }
+      .collect {| available_day | start_times_for_day(available_day)}
+      .flatten
       .reject {| start_time | is_past? start_time }
   end
 
@@ -55,14 +56,15 @@ class UpcomingDates
     is_recurring_event? schedule and available_day["day"].nil? 
   end
 
+  def start_times_for_day(available_day)
+    date = available_day["date"]
+    available_day["hours"]
+      .collect{| hour | start_time([date, hour["startTime"]])}
+  end
+
   def start_time((start_date, start_time))
     start_time_utc = time_string_mst_to_utc_0(to_utc_format_string(start_date, start_time))
     start_time_utc.strftime('%FT%RZ')
-  end
-
-  def start_date_and_time_from_available_day(available_day)
-    [available_day["date"], 
-     available_day["hours"][0]["startTime"]]
   end
 
   def time_string_mst_to_utc_0(time_string)

@@ -79,6 +79,33 @@ describe "" do
         .to eql(["2035-12-20T09:30Z", "2035-12-03T09:30Z"])
     end
 
+
+    # 9/11 at 2pm MST
+    # 9/18 at 1pm, 9/18 at 2:30pm
+    it "handles multiple hours same day" do
+      @updater.schedules = [{
+        "employeeId"=> 38318,
+        "services"=> [{ "serviceId"=> 39111 }],
+        "startDate"=> "9/11/2030", "endDate"=> "9/11/2030",
+        "availableDays"=> [{
+            "day"=> nil,
+            "hours"=> [{ "startTime"=> "14:00", "endTime"=> "15:15" }],
+            "date"=> "2030-09-11"
+          },
+          {
+            "day"=> nil,
+            "hours"=> [
+              { "startTime"=> "13:00", "endTime"=> "14:15" },
+              { "startTime"=> "14:30", "endTime"=> "15:45" }],
+            "date"=> "2030-09-18"
+          }],
+      }]
+
+      expect(@updater.start_times(39111)).to eql(
+        ["2030-09-11T20:00Z","2030-09-18T19:00Z", "2030-09-18T20:30Z"])
+    end
+    
+
     it "ignores availableDays entries for recurring event where day is nil" do
       @updater.schedules = [
         { "services"=> [{ "serviceId"=> 39113 }],
