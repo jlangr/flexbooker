@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo $(./auth.sh AnjTdmg5PTM8SjYkcuqS8FFQmbMxLvjhm6Kn8EPA)

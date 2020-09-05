@@ -2,6 +2,71 @@
   "accountTimeZone": "Mountain Standard Time",
   "employees": [
     {
+      "id": 38756,
+      "employeeGuid": "d85d4235-14e9-44ee-a33e-1aca2f119ceb",
+      "name": "Amitai Schleier",
+      "email": "schmonz-web-flexbooker@schmonz.com",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": true
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ],
+      "sendtoClientReplyToAddress": null,
+      "alternateAddressForNotifications": null,
+      "bccAddressForNotifications": null
+    },
+    {
       "id": 38317,
       "employeeGuid": "8e484287-c246-4103-b21d-a6975bd25c36",
       "name": "David Bernstein",
@@ -11,7 +76,7 @@
       "avatarUrl": null,
       "isAdmin": false,
       "locationId": null,
-      "lastLogin": "2020-08-12T17:56:57.023+00:00",
+      "lastLogin": null,
       "permissions": [
         {
           "name": "ViewCustomerList",
@@ -76,7 +141,7 @@
       "avatarUrl": null,
       "isAdmin": false,
       "locationId": null,
-      "lastLogin": "2020-08-30T21:55:29.497+00:00",
+      "lastLogin": null,
       "permissions": [
         {
           "name": "ViewCustomerList",
@@ -141,7 +206,7 @@
       "avatarUrl": null,
       "isAdmin": false,
       "locationId": null,
-      "lastLogin": "2020-08-19T12:52:18.413+00:00",
+      "lastLogin": null,
       "permissions": [
         {
           "name": "ViewCustomerList",
@@ -271,7 +336,7 @@
       "avatarUrl": null,
       "isAdmin": true,
       "locationId": null,
-      "lastLogin": "2020-08-28T14:52:50.61+00:00",
+      "lastLogin": null,
       "permissions": null,
       "sendtoClientReplyToAddress": null,
       "alternateAddressForNotifications": null,
@@ -287,7 +352,7 @@
       "avatarUrl": null,
       "isAdmin": false,
       "locationId": null,
-      "lastLogin": "2020-08-07T13:07:40.247+00:00",
+      "lastLogin": null,
       "permissions": [
         {
           "name": "ViewCustomerList",
@@ -304,6 +369,71 @@
         {
           "name": "ViewReports",
           "enabled": false
+        },
+        {
+          "name": "EditServices",
+          "enabled": false
+        },
+        {
+          "name": "EditOwnSchedules",
+          "enabled": true
+        },
+        {
+          "name": "EditOwnBookings",
+          "enabled": true
+        },
+        {
+          "name": "EditOthersSchedules",
+          "enabled": false
+        },
+        {
+          "name": "EditOthersBookings",
+          "enabled": false
+        },
+        {
+          "name": "EditCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "EditBusinessSettings",
+          "enabled": false
+        },
+        {
+          "name": "EditBookingWidgets",
+          "enabled": true
+        }
+      ],
+      "sendtoClientReplyToAddress": null,
+      "alternateAddressForNotifications": null,
+      "bccAddressForNotifications": null
+    },
+    {
+      "id": 38755,
+      "employeeGuid": "38d85a91-166d-450b-ab9e-61ca535923f0",
+      "name": "Jon Reid",
+      "email": "jon@qualitycoding.org",
+      "phone": null,
+      "description": null,
+      "avatarUrl": null,
+      "isAdmin": false,
+      "locationId": null,
+      "lastLogin": null,
+      "permissions": [
+        {
+          "name": "ViewCustomerList",
+          "enabled": false
+        },
+        {
+          "name": "ViewOthersBookings",
+          "enabled": true
+        },
+        {
+          "name": "ViewOthersSchedules",
+          "enabled": true
+        },
+        {
+          "name": "ViewReports",
+          "enabled": true
         },
         {
           "name": "EditServices",
@@ -604,10 +734,74 @@
       "rateLimitIsPercentage": false
     },
     {
+      "id": 39520,
+      "serviceGuid": "7ed0ede3-8623-4705-8c3f-3e0fd81cf6bc",
+      "name": "Strangle Your Legacy Code",
+      "description": "Extend the useful life of valuable software when it's hard to change....",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": true,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
       "id": 39218,
       "serviceGuid": "9e603a52-5619-49bc-ba16-db7bca650855",
       "name": "Evolutionary Design Without Tests",
       "description": "Sometimes you just want to see the design evolve.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39114,
+      "serviceGuid": "400e672a-a5ee-4df9-9c8c-ac1e5cc2ac2a",
+      "name": "Refactoring Java",
+      "description": "Java isn't going anywhere, so let's make it better!",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39113,
+      "serviceGuid": "e6832f5e-1fc3-4130-8d6c-97e0cbf465ed",
+      "name": "Let's Learn Purescript",
+      "description": "I'm not ready for Haskell just yet....",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": false,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39112,
+      "serviceGuid": "bdece2a4-9d61-45eb-9c39-4b74199c8953",
+      "name": "Bowling in Elm",
+      "description": "The bowling kata was just the beginning...",
       "duration": 75,
       "confirmBookingsManually": false,
       "requiresPayment": false,
@@ -700,54 +894,6 @@
       "rateLimitIsPercentage": false
     },
     {
-      "id": 39114,
-      "serviceGuid": "400e672a-a5ee-4df9-9c8c-ac1e5cc2ac2a",
-      "name": "Refactoring Java",
-      "description": "Java isn't going anywhere, so let's make it better!",
-      "duration": 75,
-      "confirmBookingsManually": false,
-      "requiresPayment": false,
-      "price": 95,
-      "formattedPrice": "$95.00",
-      "minBookingTimeBeforeApptMinutes": null,
-      "maxBookingTimeBeforeApptDays": null,
-      "minTimeBeforeAppointmentToEditMinutes": null,
-      "rateLimitAmount": null,
-      "rateLimitIsPercentage": false
-    },
-    {
-      "id": 39113,
-      "serviceGuid": "e6832f5e-1fc3-4130-8d6c-97e0cbf465ed",
-      "name": "Let's Learn Purescript",
-      "description": "I'm not ready for Haskell just yet....",
-      "duration": 75,
-      "confirmBookingsManually": false,
-      "requiresPayment": false,
-      "price": 95,
-      "formattedPrice": "$95.00",
-      "minBookingTimeBeforeApptMinutes": null,
-      "maxBookingTimeBeforeApptDays": null,
-      "minTimeBeforeAppointmentToEditMinutes": null,
-      "rateLimitAmount": null,
-      "rateLimitIsPercentage": false
-    },
-    {
-      "id": 39112,
-      "serviceGuid": "bdece2a4-9d61-45eb-9c39-4b74199c8953",
-      "name": "Bowling in Elm",
-      "description": "The bowling kata was just the beginning...",
-      "duration": 75,
-      "confirmBookingsManually": false,
-      "requiresPayment": false,
-      "price": 95,
-      "formattedPrice": "$95.00",
-      "minBookingTimeBeforeApptMinutes": null,
-      "maxBookingTimeBeforeApptDays": null,
-      "minTimeBeforeAppointmentToEditMinutes": null,
-      "rateLimitAmount": null,
-      "rateLimitIsPercentage": false
-    },
-    {
       "id": 39111,
       "serviceGuid": "c44a4353-e3bd-47d0-ba74-2f8454f24744",
       "name": "Refactoring FTW",
@@ -826,53 +972,50 @@
       "minTimeBeforeAppointmentToEditMinutes": null,
       "rateLimitAmount": null,
       "rateLimitIsPercentage": false
+    },
+    {
+      "id": 39521,
+      "serviceGuid": "ec7f452a-f229-4d76-b316-d026c09c5895",
+      "name": "TDD Paint by Numbers in Xcode",
+      "description": "Learn the Red-Green-Refactor cycle of TDD, without writing the tests.",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": true,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
     }
   ],
   "schedules": [
     {
-      "id": 876237,
-      "employeeId": 38318,
+      "id": 77535,
+      "employeeId": 38320,
       "secondEmployeeId": null,
       "services": [
         {
-          "serviceId": 39111,
-          "price": null
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "8/9/2020",
-      "endDate": "",
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [],
-      "scheduleType": 0,
-      "slots": null
-    },
-    {
-      "id": 76816,
-      "employeeId": 38319,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39113,
+          "serviceId": 39118,
           "price": 95
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "8/6/2020",
-      "endDate": "8/6/2020",
+      "startDate": "9/11/2020",
+      "endDate": null,
       "locationId": null,
       "recurs": false,
       "availableDays": [
         {
-          "day": null,
+          "day": 1,
           "hours": [
             {
-              "startTime": "09:30",
-              "endTime": "10:45"
+              "startTime": "12:00",
+              "endTime": "13:15"
             }
           ],
-          "date": "2020-08-20"
+          "date": null
         },
         {
           "day": null,
@@ -882,11 +1025,331 @@
               "endTime": "10:45"
             }
           ],
-          "date": "2020-09-03"
+          "date": "2020-09-11"
         }
       ],
       "scheduleType": 1,
-      "slots": 6
+      "slots": 1
+    },
+    {
+      "id": 77529,
+      "employeeId": 38320,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39118,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/11/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "10:30",
+              "endTime": "11:45"
+            }
+          ],
+          "date": "2020-09-11"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77531,
+      "employeeId": 38320,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39118,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/11/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "10:30",
+              "endTime": "11:45"
+            }
+          ],
+          "date": "2020-09-11"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77552,
+      "employeeId": 38320,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39118,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/21/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "10:30",
+              "endTime": "11:45"
+            }
+          ],
+          "date": "2020-09-21"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77557,
+      "employeeId": 38317,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39108,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/9/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "11:30",
+              "endTime": "12:45"
+            }
+          ],
+          "date": "2020-09-09"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77556,
+      "employeeId": 38317,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39109,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/9/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "10:00",
+              "endTime": "11:15"
+            }
+          ],
+          "date": "2020-09-09"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77555,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39115,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/11/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "13:00",
+              "endTime": "14:15"
+            }
+          ],
+          "date": "2020-09-11"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77564,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39115,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/15/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "16:00",
+              "endTime": "17:15"
+            }
+          ],
+          "date": "2020-09-15"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 77558,
+      "employeeId": 38317,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39110,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "9/9/2020",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "13:00",
+              "endTime": "14:15"
+            }
+          ],
+          "date": "2020-09-09"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
     },
     {
       "id": 77414,
@@ -918,12 +1381,12 @@
           "day": null,
           "hours": [
             {
-              "startTime": "13:00",
-              "endTime": "14:15"
+              "startTime": "13:30",
+              "endTime": "14:45"
             },
             {
-              "startTime": "14:30",
-              "endTime": "15:45"
+              "startTime": "15:00",
+              "endTime": "16:15"
             }
           ],
           "date": "2020-09-18"
@@ -933,8 +1396,8 @@
       "slots": 6
     },
     {
-      "id": 76939,
-      "employeeId": 37789,
+      "id": 77551,
+      "employeeId": 38320,
       "secondEmployeeId": null,
       "services": [
         {
@@ -943,7 +1406,7 @@
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "9/1/2020",
+      "startDate": "9/14/2020",
       "endDate": null,
       "locationId": null,
       "recurs": false,
@@ -962,11 +1425,11 @@
           "day": null,
           "hours": [
             {
-              "startTime": "18:00",
-              "endTime": "19:15"
+              "startTime": "10:30",
+              "endTime": "11:45"
             }
           ],
-          "date": "2020-09-01"
+          "date": "2020-09-14"
         }
       ],
       "scheduleType": 1,
