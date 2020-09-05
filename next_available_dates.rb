@@ -23,19 +23,17 @@ class NextAvailableDates
   end
 
   def upcoming_start_times(service_id)
-    sessions = @flexbooker.retrieve_sessions(service_id)
-    sessions.collect {| session | the_start_time(session) }
+    sessions = @flexbooker.retrieve_sessions(service_id, @bearer_token)
+# if service_id == "39115"
+#   puts "\t#{sessions}"
+# end
+    sessions.collect {| session | start_time(session) }
   end
 
-  def the_start_time(session)
-    timestamp_mountain = session[:start]
+  def start_time(session)
+    timestamp_mountain = session["start"]
     start_time_utc = time_string_mst_to_utc_0(timestamp_mountain)
     start_time_utc.strftime('%FT%RZ')
-  end
-
-  # TODO 
-  def is_past?(time_string)
-    Time.parse(time_string) < Time.now
   end
 
   def time_string_mst_to_utc_0(time_string)
@@ -70,30 +68,39 @@ class NextAvailableDates
     lines = IO.readlines(full_filename, chomp: true)
     @io.log "updating #{filename}"
     updated_lines = update_start_times(filename, lines)
-    write(full_filename, updated_lines) if updated_lines
+    if updated_lines and not updated_lines == lines
+      puts "\tupdated!"
+      write(full_filename, updated_lines) 
+    end
   end
 
   def write(full_filename, updated_lines)
     File.open(full_filename, "w") {|f| f.write(updated_lines.join("\n")) }
   end
 
+  #TODO do nothing if booking line not updated
+
   def update_start_times(filename, lines)
     service_id = flexbooker_service_id(filename, lines)
     return nil if not service_id
-    start_times = start_times(service_id)
+
+#return nil if not service_id == "39115"
+
+    start_times = upcoming_start_times(service_id)
     lines.collect{| line | update_if_next_available_sessions(line, start_times) }
   end
 
   def update_if_next_available_sessions(line, start_times)
-    property(line) == "next-available-sessions" ?  next_available_sessions_line(start_times) : line
+    property(line) == "next-available-sessions" ?  next_available_sessions_line(line, start_times) : line
   end
 
   def quoted(array)
     array.collect{| each | "\"#{each}\"" }
   end
 
-  def next_available_sessions_line(start_times)
-    "next-available-sessions: [#{comma_separated(quoted(start_times))}]"
+  def next_available_sessions_line(line, start_times)
+    updated_line = "next-available-sessions: [#{comma_separated(quoted(start_times))}]"
+    updated_line == line ? line : updated_line
   end
 
   def comma_separated(string_array)

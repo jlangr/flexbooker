@@ -1,3 +1,0 @@
-#!/bin/sh
-
-./run update_upcoming_dates

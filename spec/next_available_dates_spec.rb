@@ -16,14 +16,14 @@ describe "" do
     it "extracts start times" do
       @flexbooker = object_double(Flexbooker.new, :retrieve_sessions => 
           [{
-            "title": "Call Your Shot TDD (0/6) (James Grenning)",
-            "start": "2035-09-11T09:30:00.0000000",
-            "resourceId": 38320,
+            "title" => "Call Your Shot TDD (0/6) (James Grenning)",
+            "start" => "2035-09-11T09:30:00.0000000",
+            "resourceId" => 38320,
           },
           {
-            "title": "Another class (0/6) (James Grenning)",
-            "start": "2035-09-18T08:00:00.0000000",
-            "resourceId": 38320,
+            "title" => "Another class (0/6) (James Grenning)",
+            "start" => "2035-09-18T08:00:00.0000000",
+            "resourceId" => 38320,
           }])
       @updater = NextAvailableDates.new(flexbooker: @flexbooker, io: IOStub.new)
       expect(@updater.upcoming_start_times(39118)).to eql(["2035-09-11T15:30Z", "2035-09-18T14:00Z"])
@@ -76,3 +76,5 @@ describe "" do
     end
   end
 end
+
+# TODO pull back in the tests for the file-based stuff

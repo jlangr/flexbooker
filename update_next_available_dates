@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./run update_next_available_dates
