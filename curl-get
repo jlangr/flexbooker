@@ -4,4 +4,4 @@ TOKEN=$(./auth.sh AnjTdmg5PTM8SjYkcuqS8FFQmbMxLvjhm6Kn8EPA)
 TOKEN=$(echo "$TOKEN" | xargs) # remove quotes
 #echo $TOKEN
 
-curl -s -X GET "https://merchant-api.flexbooker.com/api/CalendarFeed?start=2020-09-04&end=2020-10-04" -H "accept: text/plain" -H "Authorization: Bearer $TOKEN" | jq .
+curl -s -X GET "https://merchant-api.flexbooker.com/api/CalendarFeed?start=2020-09-04&end=2021-12-31" -H "accept: text/plain" -H "Authorization: Bearer $TOKEN" | jq .

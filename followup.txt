@@ -1,0 +1,7 @@
+that worked, thanks.
+
+In regards to my interest in putting a survey link into the Appointment Follow-Up email... I tried creating a link:
+
+https://form.jotform.com/202755563531051?sessionInfo=[MeetingUrl]
+
+... but it looks like Flexbooker redirects that URL literally, i.e. rather than substitute the value of [MeetingUrl], 
