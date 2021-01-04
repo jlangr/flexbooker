@@ -287,7 +287,7 @@
         },
         {
           "name": "ViewReports",
-          "enabled": false
+          "enabled": true
         },
         {
           "name": "EditServices",
@@ -880,6 +880,22 @@
       "rateLimitIsPercentage": false
     },
     {
+      "id": 42046,
+      "serviceGuid": "5c41d98f-0433-44ff-a6e1-ba0494c9d359",
+      "name": "Intro to TDD: From Zero to FizzBuzz",
+      "description": "Red-Green-Refactor and the Three Laws of TDD",
+      "duration": 75,
+      "confirmBookingsManually": false,
+      "requiresPayment": true,
+      "price": 95,
+      "formattedPrice": "$95.00",
+      "minBookingTimeBeforeApptMinutes": null,
+      "maxBookingTimeBeforeApptDays": null,
+      "minTimeBeforeAppointmentToEditMinutes": null,
+      "rateLimitAmount": null,
+      "rateLimitIsPercentage": false
+    },
+    {
       "id": 41803,
       "serviceGuid": "cc31bd98-5d93-4673-8720-4dc3c734ebd4",
       "name": "BDD in Practice - Small Team",
@@ -1250,6 +1266,126 @@
   ],
   "schedules": [
     {
+      "id": 81001,
+      "employeeId": 41436,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 41802,
+          "price": 1495
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/18/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "14:00",
+              "endTime": "15:15"
+            }
+          ],
+          "date": "2021-01-18"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81000,
+      "employeeId": 41436,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 41803,
+          "price": 1495
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/11/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "14:00",
+              "endTime": "15:15"
+            }
+          ],
+          "date": "2021-01-11"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81084,
+      "employeeId": 38317,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39108,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "2/3/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "11:00",
+              "endTime": "12:15"
+            }
+          ],
+          "date": "2021-02-03"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
       "id": 80488,
       "employeeId": 38317,
       "secondEmployeeId": null,
@@ -1290,34 +1426,84 @@
       "slots": 1
     },
     {
-      "id": 80319,
-      "employeeId": 38319,
+      "id": 81081,
+      "employeeId": 38317,
       "secondEmployeeId": null,
       "services": [
         {
-          "serviceId": 39218,
+          "serviceId": 39109,
           "price": 95
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/7/2020",
-      "endDate": "12/28/2020",
+      "startDate": "1/6/2021",
+      "endDate": null,
       "locationId": null,
-      "recurs": true,
+      "recurs": false,
       "availableDays": [
         {
           "day": 1,
           "hours": [
             {
-              "startTime": "09:30",
-              "endTime": "10:45"
+              "startTime": "12:00",
+              "endTime": "13:15"
             }
           ],
           "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "11:00",
+              "endTime": "12:15"
+            }
+          ],
+          "date": "2021-01-06"
         }
       ],
       "scheduleType": 1,
-      "slots": 6
+      "slots": 1
+    },
+    {
+      "id": 81082,
+      "employeeId": 38317,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39109,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/6/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "11:00",
+              "endTime": "12:15"
+            }
+          ],
+          "date": "2021-01-06"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
     },
     {
       "id": 80810,
@@ -1350,97 +1536,17 @@
       "slots": 6
     },
     {
-      "id": 80855,
-      "employeeId": 37789,
+      "id": 81083,
+      "employeeId": 38317,
       "secondEmployeeId": null,
       "services": [
         {
-          "serviceId": 39116,
-          "price": 995
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/23/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "09:00",
-              "endTime": "10:15"
-            }
-          ],
-          "date": "2020-12-23"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 80858,
-      "employeeId": 37789,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39116,
-          "price": 995
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/23/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "15:00",
-              "endTime": "16:15"
-            }
-          ],
-          "date": "2020-12-23"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 77739,
-      "employeeId": 38790,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39589,
+          "serviceId": 39110,
           "price": 95
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/18/2020",
+      "startDate": "1/27/2021",
       "endDate": null,
       "locationId": null,
       "recurs": false,
@@ -1459,178 +1565,18 @@
           "day": null,
           "hours": [
             {
-              "startTime": "07:30",
-              "endTime": "08:45"
+              "startTime": "11:00",
+              "endTime": "12:15"
             }
           ],
-          "date": "2020-12-18"
+          "date": "2021-01-27"
         }
       ],
       "scheduleType": 1,
       "slots": 1
     },
     {
-      "id": 77707,
-      "employeeId": 38790,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39589,
-          "price": 95
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/18/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "15:30",
-              "endTime": "16:45"
-            }
-          ],
-          "date": "2020-12-18"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 80155,
-      "employeeId": 37789,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39115,
-          "price": 95
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/15/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "15:30",
-              "endTime": "16:45"
-            }
-          ],
-          "date": "2020-12-15"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 80860,
-      "employeeId": 37789,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39115,
-          "price": 95
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/21/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "09:00",
-              "endTime": "10:15"
-            }
-          ],
-          "date": "2020-12-21"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 80861,
-      "employeeId": 37789,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 39115,
-          "price": 95
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/21/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "15:00",
-              "endTime": "16:15"
-            }
-          ],
-          "date": "2020-12-21"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 80857,
+      "id": 81163,
       "employeeId": 37789,
       "secondEmployeeId": null,
       "services": [
@@ -1640,61 +1586,11 @@
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/22/2020",
-      "endDate": null,
+      "startDate": "1/12/2021",
+      "endDate": "1/12/2021",
       "locationId": null,
       "recurs": false,
       "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
-        {
-          "day": null,
-          "hours": [
-            {
-              "startTime": "09:00",
-              "endTime": "10:15"
-            }
-          ],
-          "date": "2020-12-22"
-        }
-      ],
-      "scheduleType": 1,
-      "slots": 1
-    },
-    {
-      "id": 80156,
-      "employeeId": 37789,
-      "secondEmployeeId": null,
-      "services": [
-        {
-          "serviceId": 38420,
-          "price": 95
-        }
-      ],
-      "bufferTimeInMinutes": 0,
-      "startDate": "12/22/2020",
-      "endDate": null,
-      "locationId": null,
-      "recurs": false,
-      "availableDays": [
-        {
-          "day": 1,
-          "hours": [
-            {
-              "startTime": "12:00",
-              "endTime": "13:15"
-            }
-          ],
-          "date": null
-        },
         {
           "day": null,
           "hours": [
@@ -1703,24 +1599,24 @@
               "endTime": "16:45"
             }
           ],
-          "date": "2020-12-22"
+          "date": "2021-01-12"
         }
       ],
       "scheduleType": 1,
-      "slots": 1
+      "slots": 6
     },
     {
-      "id": 80856,
-      "employeeId": 37789,
+      "id": 81456,
+      "employeeId": 38755,
       "secondEmployeeId": null,
       "services": [
         {
-          "serviceId": 39117,
+          "serviceId": 39521,
           "price": 95
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/24/2020",
+      "startDate": "1/16/2021",
       "endDate": null,
       "locationId": null,
       "recurs": false,
@@ -1739,28 +1635,28 @@
           "day": null,
           "hours": [
             {
-              "startTime": "09:00",
-              "endTime": "10:15"
+              "startTime": "11:00",
+              "endTime": "12:15"
             }
           ],
-          "date": "2020-12-24"
+          "date": "2021-01-16"
         }
       ],
       "scheduleType": 1,
       "slots": 1
     },
     {
-      "id": 80859,
-      "employeeId": 37789,
+      "id": 81457,
+      "employeeId": 38755,
       "secondEmployeeId": null,
       "services": [
         {
-          "serviceId": 39117,
+          "serviceId": 39521,
           "price": 95
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/24/2020",
+      "startDate": "2/13/2021",
       "endDate": null,
       "locationId": null,
       "recurs": false,
@@ -1779,18 +1675,118 @@
           "day": null,
           "hours": [
             {
-              "startTime": "15:00",
-              "endTime": "16:15"
+              "startTime": "10:00",
+              "endTime": "11:15"
             }
           ],
-          "date": "2020-12-24"
+          "date": "2021-02-13"
         }
       ],
       "scheduleType": 1,
       "slots": 1
     },
     {
-      "id": 80521,
+      "id": 81458,
+      "employeeId": 38755,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39521,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "2/13/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "11:00",
+              "endTime": "12:15"
+            }
+          ],
+          "date": "2021-02-13"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81161,
+      "employeeId": 37789,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39117,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/5/2021",
+      "endDate": "1/5/2021",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "15:30",
+              "endTime": "16:45"
+            }
+          ],
+          "date": "2021-01-05"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 81162,
+      "employeeId": 38420,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39117,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/12/2021",
+      "endDate": "1/12/2021",
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "15:30",
+              "endTime": "16:45"
+            }
+          ],
+          "date": "2021-01-12"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 6
+    },
+    {
+      "id": 81448,
       "employeeId": 38321,
       "secondEmployeeId": null,
       "services": [
@@ -1800,7 +1796,7 @@
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/18/2020",
+      "startDate": "1/8/2021",
       "endDate": null,
       "locationId": null,
       "recurs": false,
@@ -1823,24 +1819,64 @@
               "endTime": "13:15"
             }
           ],
-          "date": "2020-12-18"
+          "date": "2021-01-08"
         }
       ],
       "scheduleType": 1,
       "slots": 1
     },
     {
-      "id": 80519,
+      "id": 81450,
       "employeeId": 38321,
       "secondEmployeeId": null,
       "services": [
         {
-          "serviceId": 39602,
+          "serviceId": 38964,
           "price": 95
         }
       ],
       "bufferTimeInMinutes": 0,
-      "startDate": "12/18/2020",
+      "startDate": "1/15/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": "2021-01-15"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81451,
+      "employeeId": 38321,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38964,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/22/2021",
       "endDate": null,
       "locationId": null,
       "recurs": false,
@@ -1863,7 +1899,207 @@
               "endTime": "10:15"
             }
           ],
-          "date": "2020-12-18"
+          "date": "2021-01-22"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81453,
+      "employeeId": 38321,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 38964,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/29/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "09:00",
+              "endTime": "10:15"
+            }
+          ],
+          "date": "2021-01-29"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81447,
+      "employeeId": 38321,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39602,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/8/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "09:00",
+              "endTime": "10:15"
+            }
+          ],
+          "date": "2021-01-08"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81449,
+      "employeeId": 38321,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39602,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/15/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "09:00",
+              "endTime": "10:15"
+            }
+          ],
+          "date": "2021-01-15"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81452,
+      "employeeId": 38321,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39602,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/22/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": "2021-01-22"
+        }
+      ],
+      "scheduleType": 1,
+      "slots": 1
+    },
+    {
+      "id": 81454,
+      "employeeId": 38321,
+      "secondEmployeeId": null,
+      "services": [
+        {
+          "serviceId": 39602,
+          "price": 95
+        }
+      ],
+      "bufferTimeInMinutes": 0,
+      "startDate": "1/29/2021",
+      "endDate": null,
+      "locationId": null,
+      "recurs": false,
+      "availableDays": [
+        {
+          "day": 1,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": null
+        },
+        {
+          "day": null,
+          "hours": [
+            {
+              "startTime": "12:00",
+              "endTime": "13:15"
+            }
+          ],
+          "date": "2021-01-29"
         }
       ],
       "scheduleType": 1,

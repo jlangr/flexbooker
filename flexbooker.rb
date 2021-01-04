@@ -6,15 +6,19 @@ class Flexbooker
     get("https://merchant-api.flexbooker.com/api/CalendarFeed?start=#{days_out(0)}&end=#{days_out(180)}&serviceIds=#{service_id}", bearer_token)
   end
 
+  # test abstraction in TDD: 39117
+  #  TDD paint by numbers: 38420
+  #
+
   def post_schedule(bearer_token="")
     schedule = {
       "employeeId" => 37789,
       "secondEmployeeId" => nil,
-      "services" => [{ "serviceId" => 39117 }],
+      "services" => [{ "serviceId" => 38420 }],
       "bufferTimeInMinutes" => 0,
-      "startDate" => "2021-01-05",
+      "startDate" => "2021-01-12",
       "recurs" => false,
-      "availableDays": [{ "date": "2021-01-05", "hours": [{ "startTime": "3:30 PM" }]}],
+      "availableDays": [{ "date": "2021-01-12", "hours": [{ "startTime": "3:30 PM" }]}],
       "scheduleType" => 1,
       "slots" => 6
     }

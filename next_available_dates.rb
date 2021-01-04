@@ -4,8 +4,6 @@ require 'time'
 require 'active_support/time'
 require './flexbooker'
 
-PUBMOB_ROOT="/Users/jlangr/pubmob"
-OFFERINGS_DIR = "#{PUBMOB_ROOT}/_offerings"
 TIME_ZONE_FOR_FLEXBOOKER_DATES="America/Denver"
 
 class Stdout
@@ -15,18 +13,19 @@ class Stdout
 end
 
 class NextAvailableDates
-  attr_accessor :sessions, :json_string, :sessions_json_string, :bearer_token
+  attr_accessor :sessions, :json_string, :sessions_json_string, :bearer_token, :pubmob_directory
 
   def initialize(flexbooker: Flexbooker.new, io: Stdout.new)
     @io = io
     @flexbooker = flexbooker
   end
 
+  def update_files()
+    Dir.foreach(offerings_dir()) {|filename| update_file(filename) if markdown_file? filename }
+  end
+
   def upcoming_start_times(service_id)
     sessions = @flexbooker.retrieve_sessions(service_id, @bearer_token)
-# if service_id == "39115"
-#   puts "\t#{sessions}"
-# end
     sessions.collect {| session | start_time(session) }
   end
 
@@ -55,8 +54,8 @@ class NextAvailableDates
     match.captures[0]
   end
 
-  def update_files()
-    Dir.foreach("#{OFFERINGS_DIR}") {|filename| update_file(filename) if markdown_file? filename }
+  def offerings_dir()
+    "#{@pubmob_directory}/_offerings"
   end
 
   def markdown_file?(filename)
@@ -64,7 +63,7 @@ class NextAvailableDates
   end
 
   def update_file(filename)
-    full_filename = "#{OFFERINGS_DIR}/#{filename}"
+    full_filename = "#{offerings_dir()}/#{filename}"
     lines = IO.readlines(full_filename, chomp: true)
     @io.log "updating #{filename}"
     updated_lines = update_start_times(filename, lines)
