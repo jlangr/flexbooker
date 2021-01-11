@@ -1,5 +1,10 @@
 #!/bin/bash
 
+TIMESTAMP=`date +%Y-%m-%d %H-%M-%S`
+
+echo $TIMESTAMP: Daily flexbooker update 
+
+
 PATH=$PATH:/Users/jlangr/.rvm/gems/ruby-2.5.5/bin:/Users/jlangr/.rvm/gems/ruby-2.5.5@global/bin:/Users/jlangr/.rvm/rubies/ruby-2.5.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/jlangr/.rvm/bin
 
 #rvm cron setup
