@@ -8,17 +8,18 @@ class Flexbooker
 
   # test abstraction in TDD: 39117
   #  TDD paint by numbers: 38420
-  #
+  # Mob composing: 39116
+  # Legacy: 39115
 
   def post_schedule(bearer_token="")
     schedule = {
       "employeeId" => 37789,
       "secondEmployeeId" => nil,
-      "services" => [{ "serviceId" => 38420 }],
+      "services" => [{ "serviceId" => 39115 }],
       "bufferTimeInMinutes" => 0,
-      "startDate" => "2021-01-12",
+      "startDate" => "2021-02-02",
       "recurs" => false,
-      "availableDays": [{ "date": "2021-01-12", "hours": [{ "startTime": "3:30 PM" }]}],
+      "availableDays": [{ "date": "2021-02-02", "hours": [{ "startTime": "3:30 PM" }]}],
       "scheduleType" => 1,
       "slots" => 6
     }
