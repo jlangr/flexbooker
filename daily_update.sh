@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TIMESTAMP=`date +%Y-%m-%d %H-%M-%S`
+TIMESTAMP=`date`
 
 echo $TIMESTAMP: Daily flexbooker update 
 
