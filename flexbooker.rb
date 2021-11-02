@@ -8,20 +8,43 @@ class Flexbooker
 
   # test abstraction in TDD: 39117
   #  TDD paint by numbers: 38420
-  # Mob composing: 39116
+  # Mob composing: 39116 (6)
   # Legacy: 39115
+  #
+  # Jeff 37789
 
   def post_schedule(bearer_token="")
+    employee=37789
+    # post_one(bearer_token, employee, "2021-07-06", "3:30 PM", 38420)
+    # post_one(bearer_token, employee, "2021-07-13", "3:30 PM", 38420)
+    # post_one(bearer_token, employee, "2021-07-20", "3:30 PM", 39115)
+    # post_one(bearer_token, employee, "2021-07-27", "3:30 PM", 39115)
+    # post_one(bearer_token, employee, "2021-08-03", "3:30 PM", 38420)
+    # post_one(bearer_token, employee, "2021-08-10", "3:30 PM", 38420)
+    # post_one(bearer_token, employee, "2021-08-17", "3:30 PM", 39115)
+    # post_one(bearer_token, employee, "2021-08-24", "3:30 PM", 39115)
+    post_one(bearer_token, employee, "2021-09-28", "3:30 PM", 39116)
+    post_one(bearer_token, employee, "2021-10-12", "3:30 PM", 39115)
+    post_one(bearer_token, employee, "2021-10-19", "3:30 PM", 38420)
+    post_one(bearer_token, employee, "2021-10-26", "3:30 PM", 39116)
+    post_one(bearer_token, employee, "2021-11-02", "3:30 PM", 39115)
+    post_one(bearer_token, employee, "2021-11-09", "3:30 PM", 38420)
+    post_one(bearer_token, employee, "2021-11-16", "3:30 PM", 39116)
+    post_one(bearer_token, employee, "2021-11-23", "3:30 PM", 39115)
+    post_one(bearer_token, employee, "2021-11-30", "3:30 PM", 38420)
+  end
+
+  def post_one( bearer_token, employee, date, time, session, slots=6)
     schedule = {
-      "employeeId" => 37789,
+      "employeeId" => employee,
       "secondEmployeeId" => nil,
-      "services" => [{ "serviceId" => 39115 }],
+      "services" => [{ "serviceId" => session }],
       "bufferTimeInMinutes" => 0,
-      "startDate" => "2021-02-02",
+      "startDate" => date,
       "recurs" => false,
-      "availableDays": [{ "date": "2021-02-02", "hours": [{ "startTime": "3:30 PM" }]}],
+      "availableDays": [{ "date": date, "hours": [{ "startTime": time }]}],
       "scheduleType" => 1,
-      "slots" => 6
+      "slots" => slots
     }
     post("https://merchant-api.flexbooker.com/Schedule", bearer_token, schedule)
   end
