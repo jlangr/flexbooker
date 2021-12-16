@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /Users/jlangr/flexbooker
+cd ~/flexbooker
 ./run update_next_available_dates $1
